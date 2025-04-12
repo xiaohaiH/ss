@@ -1,4 +1,4 @@
-import process from 'node:process'
+import process from 'node:process';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import UnoCSS from 'unocss/vite';
@@ -10,7 +10,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
  */
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: process.env.NODE_ENV === 'development' ? '/' : '/vue3',
+    base: process.env.NODE_ENV === 'development' ? '/' : '/ss/vue3',
     plugins: [
         vue(),
         vueJsx(),
