@@ -15,21 +15,21 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             # 第一步: 定义名称并使用插件(检出仓库代码)
-            - name: Get code
-                uses: actions/checkout@v2
+            - name: get code
+              uses: actions/checkout@v2
 
             # 第二步: 安装 pnpm
             - name: Install pnpm
-                uses: pnpm/action-setup@v2
-                with:
-                    version: 8
+              uses: pnpm/action-setup@v2
+              with:
+                  version: 8
 
             # 第三步: 设置 node 版本
             - name: Set node version to 20.12.0
-                uses: actions/setup-node@v2
-                with:
-                    node-version: 20.12.0
-                    cache: pnpm
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 20.12.0
+                  cache: pnpm
 
             - run: pnpm install
 
@@ -38,27 +38,27 @@ jobs:
             #   run: pnpm switch3
             # 对示例包进行打包
             - name: build-example-v3
-                run: pnpm build:v3
+              run: pnpm build:v3
 
             #     # 要操作的文件
             # - name: copy *.html
-            #     uses: JamesIves/github-pages-deploy-action@v4
-            #     with:
-            #         folder: ./example/static
-            #         # 复制到指定文件夹(可省略)(.: 根目录, ~: 绝对路径)
-            #         target-folder: .
-            #         single-commit: true
-            #         clean: true
-            #         clean-exclude: |
-            #             *.js
-            #             *.css
+            #   uses: JamesIves/github-pages-deploy-action@v4
+            #   with:
+            #       folder: ./example/static
+            #       # 复制到指定文件夹(可省略)(.: 根目录, ~: 绝对路径)
+            #       target-folder: .
+            #       single-commit: true
+            #       clean: true
+            #       clean-exclude: |
+            #           *.js
+            #           *.css
 
             - name: copy example-v3-dist
-                uses: JamesIves/github-pages-deploy-action@v4
-                with:
-                    folder: ./examples/vue3/dist/
-                    target-folder: ./vue3
-                    clean: true
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  folder: ./examples/vue3/dist/
+                  target-folder: ./vue3
+                  clean: true
 
             # - name: copy element-ui
             #   uses: JamesIves/github-pages-deploy-action@v4
