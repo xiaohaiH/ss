@@ -142,6 +142,32 @@ export function conditionFactory() {
                 endPlaceholder: '止',
                 rules: [{ required: true, message: '必填项' }],
             },
+            tree: {
+                t: 'tree-select',
+                label: 'tree',
+                placeholder: '999',
+                rules: [{ required: true, message: '必填项' }],
+                getOptions(cb) {
+                    cb([
+                        {
+                            label: 'cas2aa',
+                            value: 'cas2aa',
+                            children: [
+                                { label: 'cas2AA1', value: 'cas2AA1' },
+                                { label: 'cas2AA2', value: 'cas2AA2' },
+                            ],
+                        },
+                        {
+                            label: 'cas2bb',
+                            value: 'cas2bb',
+                            children: [
+                                { label: 'cas2BB1', value: 'cas2BB1' },
+                                { label: 'cas2BB2', value: 'cas2BB2' },
+                            ],
+                        },
+                    ]);
+                },
+            },
             cas1: {
                 t: 'cascader',
                 label: 'cas1',

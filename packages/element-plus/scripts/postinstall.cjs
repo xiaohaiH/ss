@@ -3,7 +3,7 @@ const path = require('node:path');
 
 const dir = path.resolve(__dirname, '..');
 
-const { loadModule, reexport, writeContent } = require('./utils');
+const { loadModule, reexport, writeContent } = require('./utils.cjs');
 
 const ElementPlus = loadModule('element-plus');
 if (ElementPlus) {
