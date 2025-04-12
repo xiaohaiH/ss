@@ -6,7 +6,6 @@ export * from './custom-render/index';
 export * from './date-picker/index';
 export * from './input-number/index';
 export * from './input/index';
-export * from './mention/index';
 export * from './radio-group/index';
 export * from './radio/index';
 export * from './rate/index';
@@ -16,5 +15,9 @@ export * from './slider/index';
 export * from './switch/index';
 export * from './time-picker/index';
 export * from './time-select/index';
-export * from './tree-select/index';
 export * from './upload/index';
+
+export const HMention = {};
+export const MentionProps = {};
+export const HTreeSelect = {};
+export const TreeSelectProps = {};

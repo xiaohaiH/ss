@@ -1,4 +1,4 @@
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import HSelect from './index.vue';
 
 export { HSelect };

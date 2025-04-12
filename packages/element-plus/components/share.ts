@@ -1,5 +1,7 @@
-import { formItemProps as elFormItemProps } from 'element-plus';
+import type { Obj2Props } from '@xiaohaih/json-form-core';
+import { ElFormItem } from 'element-plus';
 import type { ExtractPropTypes, PropType, VNode } from 'vue';
+import type { ComponentProps } from 'vue-component-type-helpers';
 
 export interface SlotQuery {
     /** 是否禁用 */
@@ -42,6 +44,8 @@ export function commonPropsGeneric<T, SlotProps, Query extends Record<string, an
 /** 公共属性 */
 export const commonProps = commonPropsGeneric();
 export type CommonProps<T, SlotProps, Query extends Record<string, any>, Option> = ReturnType<typeof commonPropsGeneric<T, SlotProps, Query, Option>>;
+
+const elFormItemProps = ElFormItem.props as Obj2Props<ComponentProps<typeof ElFormItem>>;
 
 /** 表单属性 - 泛型 */
 export function formItemPropsGeneric<Query extends Record<string, any>, Option>() {

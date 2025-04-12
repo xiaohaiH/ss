@@ -1,4 +1,4 @@
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import HColorPicker from './index.vue';
 
 export { HColorPicker };
