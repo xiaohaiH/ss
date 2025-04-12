@@ -1,13 +1,17 @@
 import type { CamelCase, Obj2Props, PlainProps, usePlain } from '@xiaohaih/json-form-core';
-import { emits2props, plainProps } from '@xiaohaih/json-form-core';
-import type { buttonProps, ElUpload, UploadFile, UploadHooks, UploadRequestOptions } from 'element-plus';
-import { ElMessage, uploadProps as elUploadProps } from 'element-plus';
-// import { uploadDefaultProps as elUploadProps } from 'element-plus/es/components/time-picker/src/common/props';
+import { emits2obj, emits2props, plainProps } from '@xiaohaih/json-form-core';
+import type { buttonProps, UploadFile, UploadHooks, UploadRequestOptions } from 'element-plus';
+import { ElMessage, ElUpload } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
 
+const elUploadProps = ElUpload.props as Obj2Props<ComponentProps<typeof ElUpload>>;
+const elUploadEmits = emits2obj(ElUpload.emits);
+
+let fileId = 1000;
+export const genFileId = () => Date.now() + ++fileId;
 /** 组件传参 - 私有 */
 export function uploadPropsGeneric<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>>() {
     type _Prop = typeof elUploadProps & ReturnType<typeof emits2props<null, [NonNullable<typeof ElUpload.emits>]>>;

@@ -19,7 +19,7 @@
                 :model-value="checked as boolean"
                 class="json-form-item__content"
                 v-bind.prop="contentDynamicProps"
-                @update:model-value="change as () => void"
+                @update:model-value="(change as () => void)"
                 @[eventName].prevent="customChange"
             />
         </slot>

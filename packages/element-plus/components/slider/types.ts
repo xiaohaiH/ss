@@ -1,10 +1,13 @@
 import type { CamelCase, Obj2Props, PlainProps, usePlain } from '@xiaohaih/json-form-core';
-import { emits2props, plainProps } from '@xiaohaih/json-form-core';
-import { sliderEmits as elSliderEmits, sliderProps as elSliderProps } from 'element-plus';
+import { emits2obj, emits2props, plainProps } from '@xiaohaih/json-form-core';
+import { ElSlider } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
+
+const elSliderProps = ElSlider.props as Obj2Props<ComponentProps<typeof ElSlider>>;
+const elSliderEmits = emits2obj(ElSlider.emits);
 
 /** 组件传参 - 私有 */
 export function sliderPropsGeneric<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>>() {

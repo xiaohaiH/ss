@@ -1,8 +1,11 @@
 import type { CamelCase, WrapperProps as CoreWrapperProps, Obj2Props, useWrapper } from '@xiaohaih/json-form-core';
-import { wrapperProps as coreWrapperProps, emits2props } from '@xiaohaih/json-form-core';
-import { formEmits as elFormEmits, formProps as elFormProps, ElMessage } from 'element-plus';
+import { wrapperProps as coreWrapperProps, emits2obj, emits2props } from '@xiaohaih/json-form-core';
+import { ElForm, ElMessage } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
+
+const elFormProps = ElForm.props as Obj2Props<ComponentProps<typeof ElForm>>;
+const elFormEmits = emits2obj(ElForm.emits);
 
 /** 组件传参 - 私有 */
 export function formPropsGeneric<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>>() {
@@ -66,7 +69,7 @@ export const formEmitsPrivate = formEmitsGeneric();
 export const formEmits = {
     ...elFormEmits,
     ...formEmitsPrivate,
-} as ReturnType<typeof formEmitsGeneric<any>>;
+};
 export type FormEmits<T> = ReturnType<typeof formEmitsGeneric<T>>;
 
 export interface FormSlots<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>> {

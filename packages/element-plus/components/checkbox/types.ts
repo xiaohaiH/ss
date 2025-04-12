@@ -1,10 +1,13 @@
 import type { CamelCase, Obj2Props, PlainProps, usePlain } from '@xiaohaih/json-form-core';
-import { emits2props, plainProps } from '@xiaohaih/json-form-core';
-import { checkboxEmits as elCheckboxEmits, checkboxProps as elCheckboxProps } from 'element-plus';
+import { emits2obj, emits2props, plainProps } from '@xiaohaih/json-form-core';
+import { ElCheckbox } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
+
+const elCheckboxProps = ElCheckbox.props as Obj2Props<ComponentProps<typeof ElCheckbox>>;
+const elCheckboxEmits = emits2obj(ElCheckbox.emits);
 
 /** 组件传参 - 私有 */
 export function checkboxPropsGeneric<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>>() {
@@ -56,7 +59,7 @@ export const checkboxEmitsPrivate = checkboxEmitsGeneric();
 export const checkboxEmits = {
     ...elCheckboxEmits,
     ...checkboxEmitsPrivate,
-} as ReturnType<typeof checkboxEmitsGeneric<any>>;
+};
 export type CheckboxEmits<T> = ReturnType<typeof checkboxEmitsGeneric<T>>;
 
 export interface CheckboxSlots extends CommonSlots<Record<string, any>> {

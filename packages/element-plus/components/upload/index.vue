@@ -15,11 +15,12 @@
         <slot v-else v-bind="slotProps">
             <ElUpload
                 ref="uploadRef"
+                action="-"
                 v-bind="contentStaticProps"
-                :file-list="checked as any[]"
+                :file-list="(checked as any[])"
                 class="json-form-item__content"
                 :before-upload="finalBeforeUpload"
-                :httpRequest="finalHttpRequest as any"
+                :httpRequest="(finalHttpRequest as any)"
                 :onExceed="handleExceed"
                 v-bind.prop="contentDynamicProps"
                 @update:file-list="change"
@@ -45,14 +46,14 @@
 
 <script lang="ts">
 import { getNode, hyphenate, usePlain } from '@xiaohaih/json-form-core';
-import { ElButton, ElFormItem, ElUpload, genFileId } from 'element-plus';
+import { ElButton, ElFormItem, ElUpload } from 'element-plus';
 import type { UploadFile, UploadRawFile, UploadRequestOptions, UploadUserFile } from 'element-plus';
 import type { SlotsType } from 'vue';
 import { computed, defineComponent, onMounted, ref } from 'vue';
 import { pick } from '../../src/utils';
 import { formItemPropKeys } from '../share';
 import type { UploadSlots } from './types';
-import { uploadEmitsPrivate as emits, uploadPropsPrivate as props } from './types';
+import { uploadEmitsPrivate as emits, genFileId, uploadPropsPrivate as props } from './types';
 
 /**
  * @file 上传组件

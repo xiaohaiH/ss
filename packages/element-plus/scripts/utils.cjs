@@ -38,7 +38,7 @@ function reexport(content, Ui) {
         if (whiteList.includes($2) || hasComponent(Ui, $2)) return newContent.imp.push(all);
         newContent.exp.push([
             `export const ${camelize2(`h-${$2}`)} = {};`,
-            `export const ${camelize2(`${$2}-props`)} = {};`,
+            `export interface ${camelize2(`${$2}-props`)}<A, B, C, D> {}`,
         ].join('\n'));
     });
 

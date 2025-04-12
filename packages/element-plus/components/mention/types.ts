@@ -2,7 +2,7 @@ import type { CamelCase, hyphenate, Obj2Props, PlainProps, usePlain } from '@xia
 import { emits2props, plainProps } from '@xiaohaih/json-form-core';
 import { mentionEmits as elMentionEmits, mentionProps as elMentionProps } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
 

@@ -1,5 +1,6 @@
 import type { VNode } from 'vue-demi';
 import { markRaw } from 'vue-demi';
+import type { Hyphenate } from './base';
 
 /**
  * 空值转为提供的默认值
@@ -134,5 +135,5 @@ function cacheStringFunction<T extends (key: string) => any>(fn: T): T {
 const hyphenateRE = /\B([A-Z])/g;
 /** 将驼峰转为 - 连接 */
 export const hyphenate = cacheStringFunction(
-    (str) => str.replace(hyphenateRE, '-$1').toLowerCase(),
+    <T extends string>(str: T) => str.replace(hyphenateRE, '-$1').toLowerCase() as Hyphenate<T>,
 );

@@ -4,7 +4,7 @@ import type { TreeComponentProps } from 'element-plus';
 import { ElTree } from 'element-plus';
 import { SelectProps as elSelectProps } from 'element-plus/es/components/select/src/select';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
 

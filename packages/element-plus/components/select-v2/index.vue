@@ -16,7 +16,7 @@
             <ElSelectV2
                 v-bind="contentStaticProps"
                 :model-value="checked"
-                :options="filterSource as any"
+                :options="(filterSource as any)"
                 :filterable="filterable"
                 :clearable="clearable"
                 :filter-method="filterMethod && customFilterMethod"

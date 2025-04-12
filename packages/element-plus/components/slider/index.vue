@@ -18,7 +18,7 @@
                 :model-value="checked as number"
                 class="json-form-item__content"
                 v-bind.prop="contentDynamicProps"
-                @update:model-value="change as () => void"
+                @update:model-value="(change as () => void)"
             >
                 <template v-for="(item, slotName) of itemSlots" :key="slotName" #[hyphenate(slotName)]="row">
                     <component :is="getNode(item)" v-bind="slotProps" v-bind.prop="row" />

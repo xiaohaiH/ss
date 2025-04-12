@@ -17,7 +17,7 @@
                 v-bind="contentStaticProps"
                 :filterable="filterable"
                 :clearable="clearable"
-                :model-value="checked as string[]"
+                :model-value="(checked as string[])"
                 :filter-method="filterMethod && customFilterMethod"
                 :valueKey="valueKey"
                 class="json-form-item__content"
@@ -34,7 +34,7 @@
                                             :is="getNode(itemSlots?.option || ($slots as SelectSlots).option)"
                                             :item="group"
                                             :parent="item"
-                                            :disabled="formDisabled || (item as any)[disabledKey]"
+                                            :disabled="(item as any)[disabledKey] || formDisabled"
                                         />
                                     </template>
                                 </ElOption>
@@ -51,7 +51,7 @@
                                 <component
                                     :is="getNode(itemSlots?.option || ($slots as SelectSlots).option)"
                                     :item="item"
-                                    :disabled="formDisabled || (item as any)[disabledKey]"
+                                    :disabled="(item as any)[disabledKey] || formDisabled"
                                 />
                             </template>
                         </ElOption>
@@ -74,7 +74,7 @@
 
 <script lang="ts">
 import { getNode, hyphenate, usePlain } from '@xiaohaih/json-form-core';
-import { ElFormItem, ElOption, ElOptionGroup, ElSelect, useFormDisabled } from 'element-plus';
+import { ElFormItem, ElOption, ElOptionGroup, ElSelect } from 'element-plus';
 import type { SlotsType } from 'vue';
 import { computed, customRef, defineComponent, ref } from 'vue';
 import { pick } from '../../src/utils';
@@ -98,7 +98,9 @@ export default defineComponent({
     emits,
     slots: Object as SlotsType<SelectSlots>,
     setup(props, ctx) {
-        const formDisabled = useFormDisabled();
+        // 兼容低版本, 不对 form 做处理
+        // const formDisabled = useFormDisabled();
+        const formDisabled = false;
         const formItemStaticProps = computed(() => {
             const { formItemProps } = props;
             return { ...pick(props, formItemPropKeys), ...formItemProps };

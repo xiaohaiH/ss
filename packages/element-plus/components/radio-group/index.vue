@@ -15,10 +15,10 @@
         <slot v-else v-bind="slotProps">
             <ElRadioGroup
                 v-bind="contentStaticProps"
-                :model-value="checked as any"
+                :model-value="(checked as any)"
                 class="json-form-item__content"
                 v-bind.prop="contentDynamicProps"
-                @update:model-value="change as () => void"
+                @update:model-value="(change as () => void)"
             >
                 <template v-for="item of finalOption" :key="item[valueKey]">
                     <component

@@ -30,16 +30,25 @@ export type Emits2Props<T> = UnionToIntersection<
  * @tip
  * 当 emits 为数组时, 需要用 as const, 否则无法识别出事件名称
  */
-export function emits2obj<E extends (string[] | Record<string, any> | null | undefined), R = E extends string[] ? { [P in E[number] as CamelCase<string & P>]: () => true } : E extends null | undefined ? {} : E>(emits: E): R {
+export function emits2obj<E extends (string[] | Record<string, any> | null | undefined), R = E extends string[] ? { [P in E[number] as CamelCase<string & P>]: () => true } : E extends null | undefined ? {} : E>(emits: E): Partial<R> {
     if (!Array.isArray(emits)) return (emits || {}) as R;
     const r: Record<string, any> = {};
     const loop = () => true;
     emits.forEach((key) => r[camelize(key)] = loop);
-    return r as R;
+    return r as Partial<R>;
 }
 
 /** 转为小驼峰 */
 export type CamelCase<T extends string> = T extends `${infer A}-${infer B}` ? CamelCase<`${A}${Capitalize<B>}`> : T;
+
+/** 转为 - 连接 */
+export type Hyphenate<S extends string> = S extends `${infer First}${infer Rest}`
+    ? `${Lowercase<First>}${
+      Rest extends Uncapitalize<Rest>
+          ? Hyphenate<Rest>
+          : `-${Hyphenate<Uncapitalize<Rest>>}`
+    }`
+    : S;
 
 /** 将对象转为 vue props */
 export type Obj2Props<T> = {

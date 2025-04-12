@@ -7,7 +7,7 @@ import type { ComponentExposed, ComponentProps } from 'vue-component-type-helper
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
 
-const elCascaderProps = ElCascader.props as Obj2Props<ComponentProps<typeof ElCascader.props>>;
+const elCascaderProps = ElCascader.props as Obj2Props<ComponentProps<typeof ElCascader>>;
 const elCascaderEmits = emits2obj(ElCascader.emits);
 
 /** 组件传参 - 私有 */

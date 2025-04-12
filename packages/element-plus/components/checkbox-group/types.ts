@@ -1,11 +1,14 @@
 import type { CamelCase, Obj2Props, PlainProps, usePlain } from '@xiaohaih/json-form-core';
-import { emits2props, plainProps } from '@xiaohaih/json-form-core';
+import { emits2obj, emits2props, plainProps } from '@xiaohaih/json-form-core';
 import type { checkboxEmits as elCheckboxEmits, checkboxProps as elCheckboxProps } from 'element-plus';
-import { checkboxGroupEmits as elCheckboxGroupEmits, checkboxGroupProps as elCheckboxGroupProps } from 'element-plus';
+import { ElCheckboxGroup } from 'element-plus';
 import type { Component, ExtractPublicPropTypes, PropType } from 'vue';
-import type { ComponentExposed } from 'vue-component-type-helpers';
+import type { ComponentExposed, ComponentProps } from 'vue-component-type-helpers';
 import type { CommonProps, CommonSlots, DynamicProps, FormItemProps, StaticProps } from '../share';
 import { commonProps, formItemProps } from '../share';
+
+const elCheckboxGroupProps = ElCheckboxGroup.props as Obj2Props<ComponentProps<typeof ElCheckboxGroup>>;
+const elCheckboxGroupEmits = emits2obj(ElCheckboxGroup.emits);
 
 /** 组件传参 - 私有 */
 export function checkboxGroupPropsGeneric<T, Query extends Record<string, any>, Option, OptionQuery extends Record<string, any>>() {

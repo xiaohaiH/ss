@@ -83,13 +83,15 @@ export function conditionFactory() {
                 t: 'input',
                 label: 'input1',
                 placeholder: '哈哈哈',
-                // slotAppend: ({ query, insideSearch }) => {
-                //     return (
-                //         <div style="cursor: pointer;" onClick={() => ((query.input1 = '234'), insideSearch())}>
-                //             点我
-                //         </div>
-                //     );
-                // },
+                itemSlots: {
+                    append: ({ plain, onChange }) => {
+                        return (
+                            <div style="cursor: pointer;" onClick={() => onChange('234')}>
+                                点我
+                            </div>
+                        );
+                    },
+                },
             },
             input2: {
                 t: 'input',
