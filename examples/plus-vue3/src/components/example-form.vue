@@ -34,6 +34,7 @@
 <script lang="tsx" setup>
 import { defineOption, HForm } from '@xiaohaih/json-form-plus';
 import { conditionFactory } from '~share/form';
+import { ElCascader } from 'element-plus';
 import { markRaw, nextTick, onMounted, ref } from 'vue';
 
 /** @file 作为表单显示 */

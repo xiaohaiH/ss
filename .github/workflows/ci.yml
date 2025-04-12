@@ -37,8 +37,8 @@ jobs:
             # - name: build
             #   run: pnpm switch3
             # 对示例包进行打包
-            - name: build-example-v3
-              run: pnpm build:v3
+            - name: build-example-plus-vue3
+              run: pnpm build:plus-v3
 
             #     # 要操作的文件
             # - name: copy *.html
@@ -53,11 +53,11 @@ jobs:
             #           *.js
             #           *.css
 
-            - name: copy example-v3-dist
+            - name: copy example-plus-vue3-dist
               uses: JamesIves/github-pages-deploy-action@v4
               with:
-                  folder: ./examples/vue3/dist/
-                  target-folder: ./vue3
+                  folder: ./examples/plus-vue3/dist/
+                  target-folder: ./example-plus-vue3
                   clean: true
 
             # - name: copy element-ui
